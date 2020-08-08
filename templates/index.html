@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/querycalc.js') }}"></script>
+        <script type="text/javascript">
+            // once the DOM is ready start the calculator listener function
+            $( document ).ready( calcListener );
+        </script>
+        <title>Calculator-Web Client</title>
+         <style>
+             .alert{
+                 background: green;
+                 padding: 1rem;
+                 border-radius: 5px;
+                 color: white;
+                 margin: 1px;
+
+             }
+         </style>
+    </head>
+
+    <body>
+        <div class="outer-container">
+            <h1>Calculator</h1>
+            <form action="send" method="POST">
+            <label for="Number One">Number First</label>
+                <input type="text"
+                       placeholder="First Number"
+                       class="u-full-width"
+                       name="num1"
+                />
+                <label for="Number Two">Number Second</label>
+                <input type="text"
+                       placeholder="Second Number"
+                       class="u-full-width"
+                       name="num2"
+                />
+                <label for="operation">operation</label>
+                <select class="u-full-width" name="operation">
+                    <option value="add">Add</option>
+                    <option value="subtract">Substraction</option>
+                    <option value="multiply">Multiply</option>
+                    <option value="division">division</option>
+                </select>
+
+                <input type="Submit" value="Calculate" id="calc_btn">
+            </form>
+        </div>
+        <div class="alert" >
+            {{ sum }}
+        </div>
+    </body>
+</html>
